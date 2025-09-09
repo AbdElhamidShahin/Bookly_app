@@ -7,7 +7,7 @@ class CustomAppBarVeiw extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+      padding: const EdgeInsets.only(top: 40, bottom: 20, right: 16, left: 16),
       child: Row(
         children: [
           Image.asset("assets/images/Logo.png", height: 20),

@@ -7,6 +7,27 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [CustomAppBarVeiw(), CustomListVeiwItem()]);
+    return Column(children: [CustomAppBarVeiw(), FutureBooksListVeiw()]);
+  }
+}
+
+class FutureBooksListVeiw extends StatelessWidget {
+  const FutureBooksListVeiw({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .3,
+
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: CustomListVeiwItem(),
+          );
+        },
+      ),
+    );
   }
 }
