@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/CustomAppBarVeiw.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Column(children: [CustomAppBarVeiw()]);
   }
 }
