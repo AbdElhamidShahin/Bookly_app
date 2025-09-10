@@ -1,6 +1,7 @@
 import 'package:booky_app/presentation/screens/SplashPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'core/constants/colors.dart';
 
@@ -16,9 +17,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
+        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
+
       home: SplashPage(),
     );
   }
