@@ -1,5 +1,7 @@
+import 'package:booky_app/core/constants/Strings.dart';
 import 'package:flutter/material.dart';
 import '../../core/utils/style.dart';
+import '../widgets/BestSellarListVeiwItem.dart';
 import '../widgets/CustomAppBarVeiw.dart';
 import '../widgets/FutureBooksListVeiw.dart';
 
@@ -16,9 +18,12 @@ class HomeView extends StatelessWidget {
           CustomAppBarVeiw(),
           FutureBooksListVeiw(),
           SizedBox(height: 40),
-          Text("Best Sellar", style: Styles.titleMedium),
+          Text("Best Sellar", style: Styles.textStyle18),
+          SizedBox(height: 20),
+          BestSellarListVeiwItem(),
         ],
       ),
     );
   }
 }
+

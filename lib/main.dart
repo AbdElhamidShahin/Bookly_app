@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor,
         textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
-
       home: SplashPage(),
     );
   }

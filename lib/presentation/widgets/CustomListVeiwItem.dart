@@ -11,7 +11,7 @@ class CustomListVeiwItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.red,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           image: DecorationImage(
             image: AssetImage("assets/images/test_image.png"),
             fit: BoxFit.fill, // ممكن تغيرها حسب احتياجك
