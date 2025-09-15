@@ -1,9 +1,5 @@
-import 'package:booky_app/core/utils/AppRouter.dart';
-import 'package:booky_app/presentation/screens/HomeView.dart';
-import 'package:booky_app/presentation/screens/SplashPage.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/Strings.dart';
