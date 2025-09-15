@@ -1,4 +1,5 @@
 import 'package:booky_app/core/constants/Strings.dart';
+import 'package:booky_app/presentation/widgets/BestSellerListVeiw.dart';
 import 'package:flutter/material.dart';
 import '../../core/utils/style.dart';
 import '../widgets/BestSellarListVeiwItem.dart';
@@ -10,19 +11,29 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomAppBarVeiw(),
-          FutureBooksListVeiw(),
-          SizedBox(height: 40),
-          Text("Best Sellar", style: Styles.textStyle18),
-          SizedBox(height: 20),
-          BestSellarListVeiwItem(),
-        ],
-      ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomAppBarVeiw(),
+              ),
+              FutureBooksListVeiw(),
+              SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+
+                child: Text("Best Sellar", style: Styles.textStyle18),
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+        SliverFillRemaining(child: BestSellerListVeiw()),
+      ],
     );
   }
 }
