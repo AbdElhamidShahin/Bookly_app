@@ -1,8 +1,10 @@
+import 'package:booky_app/core/utils/AppRouter.dart';
 import 'package:booky_app/presentation/screens/HomeView.dart';
 import 'package:booky_app/presentation/screens/SplashPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/constants/Strings.dart';
 
@@ -28,11 +30,7 @@ class _SplashVeiwBodyState extends State<SplashVeiwBody>
 
   void navigatorPushHome() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.to(
-        () => const HomeView(),
-        transition: Transition.fade,
-        duration: kTranstionDuration,
-      );
+      context.go(KhomeVeiw);
     });
   }
 
