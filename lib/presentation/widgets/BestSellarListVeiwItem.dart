@@ -64,7 +64,7 @@ class BestSellarListVeiwItem extends StatelessWidget {
                           ),
                         ),
 
-                        BooksRating(),
+                        BooksRating( mainAxisAlignment: MainAxisAlignment.start,),
                       ],
                     ),
                   ],
