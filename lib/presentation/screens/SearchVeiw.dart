@@ -1,6 +1,7 @@
 import 'package:booky_app/core/utils/style.dart';
 import 'package:booky_app/presentation/screens/SearchVeiw.dart';
 import 'package:booky_app/presentation/widgets/BestSellarListVeiwItem.dart';
+import 'package:booky_app/presentation/widgets/CustomSearchListVeiw.dart';
 import 'package:booky_app/presentation/widgets/CustomTextFeild.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
