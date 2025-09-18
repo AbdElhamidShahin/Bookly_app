@@ -1,5 +1,7 @@
+import 'package:booky_app/core/constants/Strings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBarVeiw extends StatelessWidget {
   const CustomAppBarVeiw({super.key});
@@ -14,7 +16,9 @@ class CustomAppBarVeiw extends StatelessWidget {
           const Spacer(),
 
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go(KsearchView);
+            },
             icon: Icon(FontAwesomeIcons.magnifyingGlass, size: 24),
           ),
         ],

@@ -3,3 +3,4 @@ const kGtSectraFine = 'GT Sectra Fine';
 const KsplashScreen = "/";
 const KhomeVeiw = "/homeVeiw";
 const KdetailsScreen = "/detailsScreen";
+const KsearchView = "/SearchView";
