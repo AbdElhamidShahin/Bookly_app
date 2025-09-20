@@ -13,22 +13,3 @@ class ApiServise {
     return response.data;
   }
 }
-
-// class ApiServise {
-//   late Dio dio;
-//
-//   ApiServise() {
-//     BaseOptions options = BaseOptions(baseUrl: baseUrl);
-//     dio = Dio(options);
-//   }
-//
-//   Future<List<dynamic>> getCatogaryData() async {
-//     try {
-//       Response response = await Dio().get("volumes");
-//       return response.data["result"];
-//     } catch (e) {
-//       print(e.toString());
-//     }
-//     return [];
-//   }
-// }
