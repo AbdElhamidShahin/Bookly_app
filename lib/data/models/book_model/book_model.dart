@@ -1,11 +1,10 @@
-import 'package:equatable/equatable.dart';
 
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';
 import 'volume_info.dart';
 
-class BookModel extends Equatable {
+class BookModel  {
   final String? kind;
   final String? id;
   final String? etag;
