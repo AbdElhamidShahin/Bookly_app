@@ -1,0 +1,34 @@
+import 'package:booky_app/core/error/Falier.dart';
+import 'package:booky_app/core/utils/ApiServise.dart';
+import 'package:booky_app/data/models/book_model/book_model.dart';
+import 'package:booky_app/data/repositories/HomeRepo.dart';
+import 'package:dartz/dartz.dart';
+
+class HomeRepoImp implements HomeRepo {
+  final ApiServise apiServise;
+
+  HomeRepoImp(this.apiServise);
+
+  @override
+  Future<Either<Falier, List<BookModel>>> fetchBestSellerBooks() async {
+    try {
+      var data = await apiServise.getCatogaryData(
+        endPoint:
+            "volumes? Filtering-free-ebooks&Sorting=newest &q=subject:Programming",
+      );
+      List<BookModel> books = [];
+      for (var item in data["items"]) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      return Left(ServerFalier());
+    }
+  }
+
+  @override
+  Future<Either<Falier, List<BookModel>>> fetchFutureBooks() {
+    // TODO: implement fetchFutureBooks
+    throw UnimplementedError();
+  }
+}
