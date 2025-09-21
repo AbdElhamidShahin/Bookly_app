@@ -1,13 +1,13 @@
 import 'package:booky_app/data/repositories/HomeRepo.dart';
-import 'package:booky_app/presentation/blocs/FeaturedBooksCubit/FeaturedBooksState.dart';
+import 'package:booky_app/presentation/Cubits/FeaturedBooksCubit/FeaturedBooksState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FeaturedBooksBloc extends Cubit<FeaturedBooksState> {
-  FeaturedBooksBloc(this.homeRepo) : super(FeaturedBooksInitial());
+class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
+  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitial());
 
   final HomeRepo homeRepo;
   Future<void> fetchFutureBooks() async {
-    emit(FeaturedBooksLoading());
+    emit(FeaturedBooksLaoding());
     var result = await homeRepo.fetchFutureBooks();
     result.fold(
       (falier) {
