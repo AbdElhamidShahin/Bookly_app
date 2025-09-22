@@ -6,15 +6,14 @@ import 'BooksRating.dart';
 
 class BestSellarListVeiwItem extends StatelessWidget {
   const BestSellarListVeiwItem({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         context.go(KdetailsScreen);
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: SizedBox(
           height: 125,
           child: Row(
@@ -64,7 +63,7 @@ class BestSellarListVeiwItem extends StatelessWidget {
                           ),
                         ),
 
-                        BooksRating( mainAxisAlignment: MainAxisAlignment.start,),
+                        BooksRating(mainAxisAlignment: MainAxisAlignment.start),
                       ],
                     ),
                   ],
