@@ -9,7 +9,7 @@ class ApiServise {
   Future<Map<String, dynamic>> getCatogaryData({
     required String endPoint,
   }) async {
-    var response = await Dio().get("$baseUrl $endPoint");
+    var response = await Dio().get("$baseUrl$endPoint");
     return response.data;
   }
 }

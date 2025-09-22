@@ -1,20 +1,18 @@
-
 import 'package:flutter/material.dart';
 
 class CustomListVeiwItem extends StatelessWidget {
-  const CustomListVeiwItem({super.key});
-
+   CustomListVeiwItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 2.7 / 4,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.red,
           borderRadius: BorderRadius.circular(16),
           image: DecorationImage(
-            image: AssetImage("assets/images/test_image.png"),
-            fit: BoxFit.fill, // ممكن تغيرها حسب احتياجك
+            image: NetworkImage(imageUrl),
+            fit: BoxFit.fill,
           ),
         ),
       ),

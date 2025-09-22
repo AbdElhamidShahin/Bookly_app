@@ -14,7 +14,9 @@ class SimilerBooksListVeiw extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: CustomListVeiwItem(),
+            child: CustomListVeiwItem(
+              imageUrl: "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",
+            ),
           );
         },
       ),

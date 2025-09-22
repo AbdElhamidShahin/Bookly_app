@@ -23,7 +23,7 @@ class CustomDetailsScreen extends StatelessWidget {
 
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: weight * 0.25),
-                  child: CustomListVeiwItem(),
+                  child: CustomListVeiwItem(imageUrl: "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",),
                 ),
                 SizedBox(height: 32),
                 Text("The Jungle Book", style: Styles.textStyle30),
