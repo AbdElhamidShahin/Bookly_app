@@ -1,3 +1,4 @@
+import 'package:booky_app/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/Strings.dart';
@@ -5,7 +6,8 @@ import '../../core/utils/style.dart';
 import 'BooksRating.dart';
 
 class BestSellarListVeiwItem extends StatelessWidget {
-  const BestSellarListVeiwItem({super.key});
+  const BestSellarListVeiwItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,7 +27,9 @@ class BestSellarListVeiwItem extends StatelessWidget {
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
-                      image: AssetImage("assets/images/test_image.png"),
+                      image: NetworkImage(
+                        bookModel.volumeInfo.imageLinks.thumbnail,
+                      ),
                       fit: BoxFit.fill, // ممكن تغيرها حسب احتياجك
                     ),
                   ),
@@ -40,7 +44,7 @@ class BestSellarListVeiwItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * .5,
                       child: Text(
-                        "Harry Poter and the Goblet of Fire",
+                        "${bookModel.volumeInfo.title}",
                         style: Styles.textStyle20.copyWith(
                           fontFamily: kGtSectraFine,
                         ),
@@ -50,20 +54,27 @@ class BestSellarListVeiwItem extends StatelessWidget {
                     ),
 
                     SizedBox(height: 6),
-                    Text("J.K Rowling", style: Styles.textStyle14),
+                    Text(
+                      "${bookModel.volumeInfo.authors}",
+                      style: Styles.textStyle14,
+                    ),
                     SizedBox(height: 6),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "19.99\$",
+                          "Free",
                           style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
                         ),
 
-                        BooksRating(mainAxisAlignment: MainAxisAlignment.start),
+                        BooksRating(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          rating: bookModel.volumeInfo.averageRating ?? 0,
+                          ratingCount: bookModel.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     ),
                   ],

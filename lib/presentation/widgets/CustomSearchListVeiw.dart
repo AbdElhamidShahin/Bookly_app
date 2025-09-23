@@ -1,4 +1,3 @@
-import 'package:booky_app/presentation/widgets/BestSellarListVeiwItem.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchListVeiw extends StatelessWidget {
@@ -10,7 +9,7 @@ class CustomSearchListVeiw extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) {
-        return BestSellarListVeiwItem();
+        return Text("data");
       },
     );
   }

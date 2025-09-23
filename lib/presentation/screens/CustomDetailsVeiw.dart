@@ -41,7 +41,7 @@ class CustomDetailsScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: 24),
-                BooksRating(mainAxisAlignment: MainAxisAlignment.center),
+                BooksRating(mainAxisAlignment: MainAxisAlignment.center, rating: 5,ratingCount: 200,),
                 SizedBox(height: 36),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 38),
