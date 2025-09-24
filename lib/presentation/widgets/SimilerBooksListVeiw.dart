@@ -18,13 +18,14 @@ class SimilerBooksListVeiw extends StatelessWidget {
         builder: (BuildContext context, SmilarBooksState state) {
           if (state is SmilaBooksSuccess) {
             return ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: CustomListVeiwItem(
                     imageUrl:
-                        "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",
+                        state.books[index].volumeInfo.imageLinks.thumbnail?? '',
                   ),
                 );
               },

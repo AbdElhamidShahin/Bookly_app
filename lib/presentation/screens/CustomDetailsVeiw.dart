@@ -1,4 +1,5 @@
 import 'package:booky_app/core/utils/style.dart';
+import 'package:booky_app/data/models/book_model/book_model.dart';
 import 'package:booky_app/presentation/Cubits/SmilarBooskCubit/SmilarBooksCubit.dart';
 import 'package:booky_app/presentation/widgets/BooksRating.dart';
 import 'package:booky_app/presentation/widgets/CustomButton.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDetailsScreen extends StatefulWidget {
-  const CustomDetailsScreen({super.key});
+  const CustomDetailsScreen({super.key, required this.bookModel});
+  final BookModel bookModel;
 
   @override
   State<CustomDetailsScreen> createState() => _CustomDetailsScreenState();
@@ -18,7 +20,9 @@ class CustomDetailsScreen extends StatefulWidget {
 class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
   @override
   void initState() {
-    BlocProvider.of<SmilarBooksCubit>(context).fetchSmilarBooks();
+    BlocProvider.of<SmilarBooksCubit>(
+      context,
+    ).fetchSmilarBooks(category: widget.bookModel.volumeInfo.categories![0]);
 
     super.initState();
   }
@@ -37,18 +41,21 @@ class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: weight * 0.25),
                   child: CustomListVeiwItem(
-                    imageUrl:
-                        "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",
+                    imageUrl: widget.bookModel.volumeInfo.imageLinks!.thumbnail,
                   ),
                 ),
                 SizedBox(height: 32),
-                Text("The Jungle Book", style: Styles.textStyle30),
+                Text(
+                  "${widget.bookModel.volumeInfo.title}",
+                  style: Styles.textStyle30,
+                  textAlign: TextAlign.center,
+                ),
                 SizedBox(height: 6),
 
                 Opacity(
                   opacity: .7,
                   child: Text(
-                    "Rudyard Kiping",
+                    "${widget.bookModel.volumeInfo.authors![0]}",
                     style: Styles.textStyle18.copyWith(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w500,

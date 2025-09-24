@@ -3,7 +3,7 @@ import 'package:booky_app/presentation/Cubits/SmilarBooskCubit/SmilarBooksState.
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SmilarBooksCubit extends Cubit<SmilarBooksState> {
-  SmilarBooksCubit(super.SmilaBooksInitial, this.homeRepo);
+  SmilarBooksCubit(this.homeRepo) : super(SmilaBooksInitial());
 
   final HomeRepo homeRepo;
   Future<void> fetchSmilarBooks({required String category}) async {

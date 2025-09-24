@@ -12,7 +12,7 @@ class BestSellarListVeiwItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(KdetailsScreen);
+        context.go(KdetailsScreen, extra: bookModel);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),

@@ -1,5 +1,6 @@
 import 'package:booky_app/core/constants/Strings.dart';
 import 'package:booky_app/core/utils/ServiceLocator.dart';
+import 'package:booky_app/data/models/book_model/book_model.dart';
 import 'package:booky_app/data/repositories/HomeRepoImp.dart';
 import 'package:booky_app/presentation/Cubits/SmilarBooskCubit/SmilarBooksCubit.dart';
 import 'package:booky_app/presentation/screens/CustomDetailsVeiw.dart';
@@ -27,16 +28,16 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: KdetailsScreen,
-        builder: (BuildContext context, GoRouterState state) {
-          return const CustomDetailsScreen();
-        },
+        builder: (context, state) => BlocProvider(
+          create: (context) => SmilarBooksCubit(getIt.get<HomeRepoImp>()),
+          child: CustomDetailsScreen(bookModel: state.extra as BookModel),
+        ),
       ),
       GoRoute(
         path: KsearchView,
-        builder: (BuildContext context, GoRouterState state) => BlocProvider(
-          create: (context) => SmilarBooksCubit(getIt.get<HomeRepoImp>()),
-          child: const SearchView(),
-        ),
+        builder: (BuildContext context, GoRouterState state) {
+          return const SearchView();
+        },
       ),
     ],
   );
