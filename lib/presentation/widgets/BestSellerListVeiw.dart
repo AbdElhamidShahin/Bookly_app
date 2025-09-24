@@ -19,8 +19,7 @@ class BestSellerListVeiw extends StatelessWidget {
             itemCount: state.books.length,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return BestSellarListVeiwItem(
-                  bookModel: state.books[index]);
+              return BestSellarListVeiwItem(bookModel: state.books[index]);
             },
           );
         }

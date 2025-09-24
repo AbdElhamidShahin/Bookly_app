@@ -10,8 +10,8 @@ class NewsedBooksCubit extends Cubit<NewsedBooksState> {
     emit(NewsedBooksLoading());
     var result = await homeRepo.fetchBestSellerBooks();
     result.fold(
-      (failure) {
-        emit(NewsedBooksFailure(failure.errorMessage));
+      (falier) {
+        emit(NewsedBooksFailure(falier.errorMessage));
       },
       (books) {
         emit(NewsedBooksSuccess(books));

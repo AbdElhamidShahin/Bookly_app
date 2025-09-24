@@ -1,14 +1,27 @@
 import 'package:booky_app/core/utils/style.dart';
-import 'package:booky_app/presentation/screens/CustomDetailsVeiw.dart';
+import 'package:booky_app/presentation/Cubits/SmilarBooskCubit/SmilarBooksCubit.dart';
 import 'package:booky_app/presentation/widgets/BooksRating.dart';
 import 'package:booky_app/presentation/widgets/CustomButton.dart';
 import 'package:booky_app/presentation/widgets/CustomDetailsScreenAppbar.dart';
 import 'package:booky_app/presentation/widgets/CustomListVeiwItem.dart';
 import 'package:booky_app/presentation/widgets/SimilerBooksListVeiw.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomDetailsScreen extends StatelessWidget {
+class CustomDetailsScreen extends StatefulWidget {
   const CustomDetailsScreen({super.key});
+
+  @override
+  State<CustomDetailsScreen> createState() => _CustomDetailsScreenState();
+}
+
+class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<SmilarBooksCubit>(context).fetchSmilarBooks();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +36,10 @@ class CustomDetailsScreen extends StatelessWidget {
 
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: weight * 0.25),
-                  child: CustomListVeiwItem(imageUrl: "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",),
+                  child: CustomListVeiwItem(
+                    imageUrl:
+                        "https://wallpapers.com/images/featured-full/dark-phone-background-hylg8426ydj2r73s.jpg",
+                  ),
                 ),
                 SizedBox(height: 32),
                 Text("The Jungle Book", style: Styles.textStyle30),
@@ -41,7 +57,11 @@ class CustomDetailsScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: 24),
-                BooksRating(mainAxisAlignment: MainAxisAlignment.center, rating: 5,ratingCount: 200,),
+                BooksRating(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  rating: 5,
+                  ratingCount: 200,
+                ),
                 SizedBox(height: 36),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 38),

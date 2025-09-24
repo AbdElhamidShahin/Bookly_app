@@ -34,6 +34,28 @@ class HomeRepoImp implements HomeRepo {
   Future<Either<Falier, List<BookModel>>> fetchFutureBooks() async {
     try {
       var data = await apiServise.getCatogaryData(
+        endPoint:
+            "volumes?Filtering=free-ebooks&Sorting=relevance&q=subject:Programming",
+      );
+      List<BookModel> books = [];
+      for (var item in data["items"]) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Falier, List<BookModel>>> fetchSmilarBooks({
+    required String category,
+  }) async {
+    try {
+      var data = await apiServise.getCatogaryData(
         endPoint: "volumes?Filtering=free-ebooks&q=subject:Programming",
       );
       List<BookModel> books = [];
