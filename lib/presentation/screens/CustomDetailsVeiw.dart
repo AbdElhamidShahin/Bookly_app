@@ -8,6 +8,7 @@ import 'package:booky_app/presentation/widgets/CustomListVeiwItem.dart';
 import 'package:booky_app/presentation/widgets/SimilerBooksListVeiw.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomDetailsScreen extends StatefulWidget {
   const CustomDetailsScreen({super.key, required this.bookModel});
@@ -81,19 +82,26 @@ class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
                             bottomLeft: Radius.circular(16),
                           ),
                           backgroundColor: Colors.white,
-                          text: "19.99\$",
+                          text: "Free",
                           fontSize: 16,
                           textColor: Colors.black,
                         ),
                       ),
                       Expanded(
                         child: CustomButton(
+                          onPressed: () async {
+                            final Uri uri = Uri.parse(widget.bookModel.volumeInfo.previewLink!);
+
+                            if (await canLaunchUrl(uri)) {
+                              await launchUrl(uri);
+                            }
+                          },
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(16),
                             bottomRight: Radius.circular(16),
                           ),
                           backgroundColor: Color(0xffEF8262),
-                          text: "Free PreView",
+                          text: "PreView",
                           fontSize: 16,
                           textColor: Colors.white,
                         ),

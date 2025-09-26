@@ -1,35 +1,36 @@
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomTextFeild extends StatelessWidget {
-  const CustomTextFeild({super.key});
+  final void Function(String)? onPressed;
+
+  const CustomTextFeild({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          decoration: InputDecoration(
-            enabledBorder: buildOutlineInputBorder(),
-            focusedBorder: buildOutlineInputBorder(),
-            hintText: 'Search',
-            suffixIcon: IconButton(
-              onPressed: () {},
-              icon: const Opacity(
-                opacity: .8,
-                child: Icon(FontAwesomeIcons.magnifyingGlass, size: 22),
-              ),
-            ),
-          ),
+    final controller = TextEditingController();
+
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: 'Search for a book...',
+        prefixIcon: Icon(Icons.search),
+        suffixIcon: IconButton(
+          icon: Icon(Icons.arrow_forward),
+          onPressed: () {
+            if (onPressed != null) {
+              onPressed!(controller.text);
+            }
+          },
         ),
-      ],
-    );
-  }
-  OutlineInputBorder buildOutlineInputBorder() {
-    return OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.grey),
-      borderRadius: BorderRadius.circular(12),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+      onSubmitted: (value) {
+        if (onPressed != null) {
+          onPressed!(value);
+        }
+      },
     );
   }
 }

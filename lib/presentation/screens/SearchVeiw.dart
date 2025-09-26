@@ -1,13 +1,24 @@
 import 'package:booky_app/core/utils/style.dart';
-import 'package:booky_app/presentation/screens/SearchVeiw.dart';
-import 'package:booky_app/presentation/widgets/BestSellarListVeiwItem.dart';
+import 'package:booky_app/presentation/Cubits/SearchBooksCubit/SearchBooksCubit.dart';
 import 'package:booky_app/presentation/widgets/CustomSearchListVeiw.dart';
 import 'package:booky_app/presentation/widgets/CustomTextFeild.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchView extends StatelessWidget {
-  const SearchView({super.key});
+class SearchView extends StatefulWidget {
+  SearchView({super.key});
+  @override
+  State<SearchView> createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<SearchView> {
+  @override
+  void initState() {
+    context.read<SearchBooksCubit>().loadAllBooks();
+
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +27,22 @@ class SearchView extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: CustomTextFeild(),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child:CustomTextFeild(
+                onPressed: (value) {
+                  if (value.isNotEmpty) {
+                    context.read<SearchBooksCubit>().searchLocal(value);
+                  }
+                },
+              ),
+
             ),
-            SizedBox(height: 16,),
+            const SizedBox(height: 16),
             Text("Search Result", style: Styles.textStyle18),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: CustomSearchListVeiw(),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: const CustomSearchListVeiw(),
               ),
             ),
           ],
